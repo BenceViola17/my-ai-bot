@@ -1,0 +1,35 @@
+{
+  "name": "my-ai-bot",
+  "version": "1.0.0",
+  "description": "MyAI — teljesen önálló, lokálisan futó AI: saját API kulcs, memória, 3D UI, párhuzamos multi-model router",
+  "main": "src/index.js",
+  "type": "commonjs",
+  "bin": { "myai": "src/index.js" },
+  "scripts": {
+    "start": "node src/index.js chat",
+    "ask": "node src/index.js",
+    "serve": "node src/index.js serve",
+    "server": "node src/index.js serve",
+    "ui": "node src/index.js serve",
+    "chat": "node src/index.js chat",
+    "doctor": "node src/index.js doctor",
+    "models": "node src/index.js models",
+    "pull": "node src/index.js pull",
+    "index": "node src/index.js index .",
+    "docs": "node src/index.js ask-docs",
+    "identity": "node src/index.js identity",
+    "memory": "node src/index.js memory",
+    "test": "node src/index.js selftest",
+    "setup": "node src/index.js pull llama3.2 && node src/index.js pull nomic-embed-text && node src/index.js doctor",
+    "github": "node scripts/github-setup.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "chalk": "^4.1.2",
+    "ora": "^5.4.1",
+    "inquirer": "^8.2.6",
+    "nanoid": "^3.3.8"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
