@@ -1,0 +1,47 @@
+{
+  "defaults": {
+    "temperature": 0.7,
+    "maxTokens": 4096,
+    "systemPrompt": "Te a MyAI Bot vagy — egy fejlett, lokálisan futó AI asszisztens (Ollama motor, llama3.2 modell a felhasználó gépén). Válaszolj a felhasználó nyelvén (magyarul, ha magyarul kérdez), tömören és pontosan. Kód esetén mindig code block-ban add.\n\nIsmerd a saját parancsaidat (csak ezek léteznek):\n- myai \"kérdés\" — egyszeri kérdés\n- myai chat — interaktív beszélgetés\n- myai serve — lokális szerver (http://localhost:4141/v1, OpenAI-kompatibilis)\n- myai doctor — diagnosztika\n- myai models — modellek listája\n- myai pull <modell> — modell letöltése (llama3.2, qwen2.5-coder, deepseek-r1, phi3.5, nomic-embed-text)\n- myai index [mappa] — RAG indexelés\n- myai ask-docs \"kérdés\" — kérdés a saját fájlokról\n- npm start / pnpm start — chat a my-ai-bot mappából\n\nFONTOS: ha a felhasználó nem létező parancsot említ (pl. 'ollama launch' vagy 'claude'), mondd meg, hogy ilyen nincs, és ajánld a fenti valós parancsok egyikét. Nem vagy Claude, ChatGPT és nem vagy egy cég AI-ja — a MyAI Bot vagy, ami lokálisan fut.",
+    "historyLimit": 40
+  },
+  "routing": {
+    "primary": "auto",
+    "fallbackOrder": ["ollama", "llamacpp", "lmstudio"],
+    "maxRetries": 2,
+    "retryDelayMs": 800
+  },
+  "providers": [
+    {
+      "id": "ollama",
+      "type": "ollama",
+      "enabled": true,
+      "baseUrl": "http://localhost:11434",
+      "apiKeyEnv": null,
+      "models": ["llama3.2", "llama3.1", "qwen2.5-coder", "deepseek-r1", "phi3.5", "nomic-embed-text"],
+      "defaultModel": "llama3.2",
+      "embedModel": "nomic-embed-text",
+      "supports": { "stream": true, "tools": true, "embeddings": true, "modelManagement": true }
+    },
+    {
+      "id": "llamacpp",
+      "type": "openai",
+      "enabled": true,
+      "baseUrl": "http://localhost:8080/v1",
+      "apiKeyEnv": null,
+      "models": ["local-model"],
+      "defaultModel": "local-model",
+      "supports": { "stream": true }
+    },
+    {
+      "id": "lmstudio",
+      "type": "openai",
+      "enabled": true,
+      "baseUrl": "http://localhost:1234/v1",
+      "apiKeyEnv": null,
+      "models": ["local-model"],
+      "defaultModel": "local-model",
+      "supports": { "stream": true }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "ai-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Parancsok továbbítása a my-ai-bot mappába — így az AI gyökérmappából is indul a bot",
+  "scripts": {
+    "start": "npm --prefix my-ai-bot run chat",
+    "chat": "npm --prefix my-ai-bot run chat",
+    "ask": "npm --prefix my-ai-bot run ask",
+    "serve": "npm --prefix my-ai-bot run serve",
+    "server": "npm --prefix my-ai-bot run serve",
+    "doctor": "npm --prefix my-ai-bot run doctor",
+    "models": "npm --prefix my-ai-bot run models",
+    "pull": "npm --prefix my-ai-bot run pull",
+    "index": "npm --prefix my-ai-bot run index",
+    "docs": "npm --prefix my-ai-bot run docs",
+    "test": "npm --prefix my-ai-bot run test",
+    "setup": "npm --prefix my-ai-bot run setup",
+    "install:bot": "npm --prefix my-ai-bot install"
+  }
+}
