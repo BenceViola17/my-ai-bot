@@ -4,7 +4,9 @@
   "description": "MyAI — teljesen önálló, lokálisan futó AI: saját API kulcs, memória, 3D UI, párhuzamos multi-model router",
   "main": "src/index.js",
   "type": "commonjs",
-  "bin": { "myai": "src/index.js" },
+  "bin": {
+    "myai": "src/index.js"
+  },
   "scripts": {
     "start": "node src/index.js chat",
     "ask": "node src/index.js",
@@ -23,7 +25,9 @@
     "setup": "node src/index.js pull llama3.2 && node src/index.js pull nomic-embed-text && node src/index.js doctor",
     "github": "node scripts/github-setup.js"
   },
-  "engines": { "node": ">=18" },
+  "engines": {
+    "node": ">=18"
+  },
   "dependencies": {
     "dotenv": "^16.4.5",
     "chalk": "^4.1.2",
