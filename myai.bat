@@ -1,7 +1,7 @@
 @echo off
 REM ============================================
-REM  MyAI Bot - parancsfájl (Windows)
-REM  Használat: myai.bat [parancs] [argumentumok]
+REM  MyAI Bot - parancs fajl (Windows)
+REM  Hasznalat: myai.bat [parancs] [argumentumok]
 REM ============================================
 setlocal
 set BOTDIR=%~dp0
@@ -14,7 +14,7 @@ if %errorlevel%==0 (
   set PKG=npm
 )
 
-REM Függőségek auto-telepítés, ha hiányoznak
+REM Fuggosegek auto-telepitese, ha hianyoznak
 if not exist "node_modules" (
   echo [MyAI] Fuggosegek telepitese %PKG%-gel...
   call %PKG% install
@@ -31,6 +31,7 @@ if /i "%~1"=="models" goto :models
 if /i "%~1"=="pull" goto :pull
 if /i "%~1"=="identity" goto :identity
 if /i "%~1"=="memory" goto :memory
+if /i "%~1"=="help" goto :help
 if /i "%~1"=="ask" (
   shift
   goto :ask
@@ -41,12 +42,26 @@ if /i "%~1"=="docs" (
 )
 goto :direct
 
+:help
+echo MyAI Bot parancsok:
+echo   myai.bat chat           - interaktiv beszelgetes
+echo   myai.bat ask "kerdes"   - egyszeri kerdes
+echo   myai.bat serve          - szerver + 3D UI (localhost:4141)
+echo   myai.bat doctor         - diagnosztika
+echo   myai.bat models         - modellek listaja
+echo   myai.bat pull ^<modell^>  - modell letoltese
+echo   myai.bat identity       - bot sajat adatai
+echo   myai.bat memory         - hosszu tavu memoria
+echo   myai.bat docs "kerdes"  - kerdes a fajlaidrol (RAG)
+call node src/index.js help
+goto :eof
+
 :chat
 call node src/index.js chat
 goto :eof
 
 :serve
-echo [MyAI] Szerver indul: http://localhost:4141  (UI: bongeszo)
+echo [MyAI] Szerver indul: http://localhost:4141  (3D UI a bongeszoben)
 call node src/index.js serve
 goto :eof
 
